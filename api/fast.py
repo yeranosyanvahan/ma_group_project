@@ -7,7 +7,6 @@ import csv
 
 app = FastAPI()
 
-# Dependency to get the database session
 def get_db():
     """ """
     db = SessionLocal()
@@ -16,7 +15,6 @@ def get_db():
     finally:
         db.close()
 
-# Endpoints for Fact_Transacation
 @app.post("/transaction/")
 def create_transaction(item_data: dict, db: Session = Depends(get_db)):
     """
@@ -133,7 +131,6 @@ def delete_transaction(transaction_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Transaction not found")
     return {"status": "success", "message": "Transaction deleted successfully"}
 
-# Endpoints for Dim_Payment_Method
 @app.post("/payment_method/")
 def create_payment_method(item_data: dict, db: Session = Depends(get_db)):
     """
@@ -250,7 +247,6 @@ def delete_payment_method(payment_method_id: int, db: Session = Depends(get_db))
         raise HTTPException(status_code=404, detail="Payment Method not found")
     return {"status": "success", "message": "Payment Method deleted successfully"}
 
-# Endpoints for Dim_Customer
 @app.post("/customer/")
 def create_customer(item_data: dict, db: Session = Depends(get_db)):
     """

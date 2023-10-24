@@ -21,3 +21,11 @@ CREATE TABLE fact_transacation (
     FOREIGN KEY (customer_id) REFERENCES dim_customer(customer_id),
     FOREIGN KEY (payment_method_id) REFERENCES dim_payment_method(payment_method_id)
 );
+
+-- Create the CLV_Prediction Table
+CREATE TABLE clv_prediction (
+    prediction_id SERIAL PRIMARY KEY,
+    customer_id INT,
+    clv FLOAT,
+    FOREIGN KEY (customer_id) REFERENCES dim_customer(customer_id)
+);

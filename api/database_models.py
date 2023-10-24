@@ -3,11 +3,9 @@ from sqlalchemy.orm import relationship, sessionmaker, declarative_base
 
 Base = declarative_base()
 
-# Define the engine first
-database_url = "mysql+mysqldb://root@127.0.0.1:3306/internet_service_provider"
+database_url = "mysql+mysqldb://root:Admin2001?@127.0.0.1:3306/internet_service_provider"
 engine = create_engine(database_url)
 
-# Now, define the session factory
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 class Fact_Transacation(Base):
@@ -35,7 +33,13 @@ class Dim_Customer(Base):
     age = Column(Integer)
     gender = Column(String(100))
 
+class CLV_Prediction(Base):
+    __tablename__ = "clv_prediction"
+
+    prediction_id = Column(Integer, autoincrement=True, primary_key=True)
+    customer_id = Column(Integer, ForeignKey('dim_customer.customer_id'))
+    clv = Column(Float)
+
 
 if __name__ == "__main__":
-    # Create the database tables
     Base.metadata.create_all(bind=engine)
