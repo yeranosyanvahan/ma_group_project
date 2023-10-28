@@ -8,6 +8,7 @@ The project aims to develop a Python package for predicting a customer's Lifetim
 ## Milestone 1
 
 Virtual environment initiation -> ```requirements.txt ```
+
 Project-related documents: MoSCoW, Roadmap, ProblemDefinition, Database ERD
 
 
@@ -17,13 +18,13 @@ Project-related documents: MoSCoW, Roadmap, ProblemDefinition, Database ERD
 
 ```clv```:
 
- ```api```: placeholder for API development components of the project
+   ```api```: placeholder for API development components of the project
 
- ```db```: placeholder for Database development components of the project 
+   ```db```: placeholder for Database development components of the project 
 
- ```models```: placeholder for the modeling-related classes, functions
+   ```models```: placeholder for the modeling-related classes, functions
 
- ```logger```: placeholder for logger module-related components
+   ```logger```: placeholder for logger module-related components
 
 
 ## SetUp
