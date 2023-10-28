@@ -16,6 +16,8 @@ Project-related documents: MoSCoW, Roadmap, ProblemDefinition, Database ERD
 
 ```docs```: project-related documents
 
+```data```: project data
+
 ```clv```:
 
    ```api```: placeholder for API development components of the project
