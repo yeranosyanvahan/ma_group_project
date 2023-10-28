@@ -16,10 +16,14 @@ Project-related documents: MoSCoW, Roadmap, ProblemDefinition, Database ERD
 ```docs```: project-related documents
 
 ```clv```:
-    ```api```: placeholder for API development components of the project
-    ```db```: placeholder for Database development components of the project 
-    ```models```: placeholder for the modeling-related classes, functions
-    ```logger```: placeholder for logger module-related components
+
+ ```api```: placeholder for API development components of the project
+
+ ```db```: placeholder for Database development components of the project 
+
+ ```models```: placeholder for the modeling-related classes, functions
+
+ ```logger```: placeholder for logger module-related components
 
 
 ## SetUp
