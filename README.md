@@ -33,7 +33,7 @@ To get started, run
 
 ```python -m clv.db.schema ``` to create the schema
 
-```  python .\basic_clv.py``` to load the data
+```python -m clv.basic_clv``` to load the data in the root of the repo
 
 and ```python -m clv.api.fast``` to run the api
 
