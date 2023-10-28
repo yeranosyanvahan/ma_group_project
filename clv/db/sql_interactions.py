@@ -29,9 +29,29 @@ class SqlHandler:
         self.cnxn.close()
         logger.info('the connection has been closed')
 
-    def insert_one()->None:
-        """ """
-        pass
+    def insert_one(self, values: dict) -> str:
+        """
+        Insert a single row into the table.
+
+        Parameters:
+            values (dict): A dictionary containing the column names and their respective values.
+
+        Returns:
+            str: A message indicating the success of the insertion.
+        """
+        columns = list(values.keys())
+        ncolumns = len(columns) * '?'
+        cols = ', '.join(columns)
+        params = ', '.join(ncolumns)
+
+        query = f"""INSERT INTO {self.table_name} ({cols}) VALUES ({params});"""
+
+        try:
+            self.cursor.execute(query, list(values.values()))
+            self.cnxn.commit()
+            return "Row inserted successfully."
+        except Exception as e:
+            return f"Error inserting row: {str(e)}"
 
     def get_table_columns(self)->list:
         """ """
@@ -180,6 +200,24 @@ class SqlHandler:
         pass
         # TODO: complete on your own
 
+    def select_row(self, column_name, value):
+        """
+        Select a row from the table based on a specific column name and its value.
+
+        Parameters:
+        - column_name (str): The name of the column to filter on.
+        - value: The value to filter rows by in the specified column.
+
+        Returns:
+        - A tuple containing the selected row.
+        """
+        query = f"SELECT * FROM {self.table_name} WHERE {column_name} = ?;"
+        self.cursor.execute(query, (value,))
+        rows = self.cursor.fetchall()
+        if not rows:
+            return "No matching data found."
+        else:
+            return rows
    
         
 
