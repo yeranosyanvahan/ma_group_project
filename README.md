@@ -7,24 +7,24 @@ The project aims to develop a Python package for predicting a customer's Lifetim
 Milestone 1
 
 Virtual environment initiation  requirements.txt 
-Project - related documents: …_MoSCoW.pdf, …_Roadmap.pdf, …_ProblemDefinition.pdf
+Project-related documents: MoSCoW.pdf, Roadmap.pdf, ProblemDefinition.pdf, ERD of the database.
 
 
 Milestone 2
 
-docs: project - related documents
-api: placeholder for API development components of the project
-db: placeholder for Database development components of the project 
+Docs: project-related documents
+API: placeholder for API development components of the project
+DB: placeholder for Database development components of the project 
 models: placeholder for the modeling-related classes, functions
-logs: placeholder for logger module related components
+logs: placeholder for logger module-related components
 
 
-Note: Current README.md file aims to coordinate the folders of project components in a simple manner. Along with further milestones and when the project is complete, it will be adapted to the required standards, integrating the processes of installation, usage, features, etc. 
+Note: The current README.md file aims to coordinate the folders of project components in a simple manner. Along with further milestones and when the project is complete, it will be adapted to the required standards, integrating the processes of installation, usage, features, etc. 
 
 
 ### SETUP
 
-To get started run 
+To get started, run 
 
 ```python -m clv.db.schema ``` to create the schema
 
