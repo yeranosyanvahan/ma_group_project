@@ -6,7 +6,7 @@ __pycache__/
 
 # C extensions
 *.so
-
+feedback.md
 # Distribution / packaging
 .Python
 build/
