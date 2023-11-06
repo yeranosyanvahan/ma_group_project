@@ -7,7 +7,7 @@ The project aims to develop a Python package for predicting a customer's Lifetim
 
 ## Milestone 1
 
-Virtual environment initiation -> ```requirements.txt ```
+Virtual environment initiation: ```requirements.txt ```
 
 Project-related documents: MoSCoW, Roadmap, ProblemDefinition, Database ERD
 
@@ -31,7 +31,7 @@ Project-related documents: MoSCoW, Roadmap, ProblemDefinition, Database ERD
 
 ## Milestone 3
 
-Defining business scenarios where the package for predicting Customer Lifetime Value (CLV) can be applied -> ```docs/DS223_Group5_ApplicationScenarios.pdf```
+Defining business scenarios where the package for predicting Customer Lifetime Value (CLV) can be applied ```docs/DS223_Group5_ApplicationScenarios.pdf```
 
 
 ## SetUp
