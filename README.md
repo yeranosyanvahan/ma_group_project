@@ -29,6 +29,11 @@ Project-related documents: MoSCoW, Roadmap, ProblemDefinition, Database ERD
    ```logger```: placeholder for logger module-related components
 
 
+## Milestone 3
+
+Defining business scenarios where the package for predicting Customer Lifetime Value (CLV) can be applied -> ```docs/DS223_Group5_ApplicationScenarios.pdf```
+
+
 ## SetUp
 
 To get started, run 
