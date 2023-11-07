@@ -13,16 +13,30 @@ ch.setFormatter(CustomFormatter())
 logger.addHandler(ch)
 
 class SqlHandler:
-    """ """
+    """
+    A class to handle common SQL operations on a database.
 
+    Attributes:
+    - dbname (str): The name of the database.
+    - table_name (str): The name of the table to perform operations on.
+    """
     def __init__(self, dbname:str,table_name:str) -> None:
+        """
+        Initialize the SqlHandler object with a database name and table name.
+
+        Parameters:
+        - dbname (str): The name of the database to connect to.
+        - table_name (str): The name of the table to perform operations on.
+        """        
         self.cnxn=sqlite3.connect(f'{dbname}.db')
         self.cursor=self.cnxn.cursor()
         self.dbname=dbname
         self.table_name=table_name
 
     def close_cnxn(self)->None:
-        """ """
+        """
+        Close the connection to the database.
+        """
 
         logger.info('commiting the changes')
         self.cursor.close()
@@ -54,7 +68,14 @@ class SqlHandler:
             return f"Error inserting row: {str(e)}"
 
     def get_table_columns(self)->list:
-        """ """
+        """
+        Retrieve a list of column names from the table in the database.
+        
+        This method uses the PRAGMA table_info SQL command to get metadata about the table's columns.
+        
+        Returns:
+            list: A list of column names from the table.
+        """
         self.cursor.execute(f"PRAGMA table_info({self.table_name});")
         columns = self.cursor.fetchall()
         
@@ -65,7 +86,12 @@ class SqlHandler:
         return column_names
     
     def truncate_table(self)->None:
-        """ """
+        """
+        Remove all data from the table by dropping it and creating a new one.
+        
+        This method drops the table if it exists, effectively removing all data from it.
+        Use with caution as this will result in data loss.
+        """
         
         query=f"DROP TABLE IF EXISTS {self.table_name};"
         self.cursor.execute(query)
@@ -73,7 +99,11 @@ class SqlHandler:
         # self.cursor.close()
 
     def drop_table(self):
-        """ """
+        """
+        Drop the table from the database.
+        
+        This method drops the table if it exists. This action cannot be undone.
+        """
         
         query = f"DROP TABLE IF EXISTS {self.table_name};"
         logging.info(query)
@@ -141,10 +171,6 @@ class SqlHandler:
         
         logger.warning('the data is loaded')
 
-    def from_sql_to_pandas(self, )-> pd.DataFrame:
-        """ """
-        pass
-        #TODO: do it by yourself
 
     def from_sql_to_pandas(self, chunksize:int, id_value:str) -> pd.DataFrame:
         """
