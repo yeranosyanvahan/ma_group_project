@@ -1,6 +1,6 @@
 # Importing necessary modules
-from .db import SqlHandler
-from .logger import CustomFormatter
+from clv.db import SqlHandler
+from clv.logger import CustomFormatter
 import pandas as pd
 
 # For dim_customer table

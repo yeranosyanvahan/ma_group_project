@@ -65,7 +65,7 @@ def update_transaction(transaction_id: int, item_data: dict, db: Session = Depen
     -------
 
     """
-    updated_item = crud.update(db, Fact_Transacation, transaction_id, item_data)
+    updated_item = crud.update(db, Fact_Transacation, Fact_Transacation.transaction_id == transaction_id, item_data)
     if not updated_item:
         raise HTTPException(status_code=404, detail="Transaction not found")
     return updated_item
@@ -85,7 +85,7 @@ def delete_transaction(transaction_id: int, db: Session = Depends(get_db)):
     -------
 
     """
-    success = crud.delete(db, Fact_Transacation, transaction_id)
+    success = crud.delete(db, Fact_Transacation, Fact_Transacation.transaction_id ==transaction_id)
     if not success:
         raise HTTPException(status_code=404, detail="Transaction not found")
     return {"status": "success", "message": "Transaction deleted successfully"}
@@ -141,7 +141,7 @@ def update_payment_method(payment_method_id: int, item_data: dict, db: Session =
     -------
 
     """
-    updated_item = crud.update(db, Dim_Payment_Method, payment_method_id, item_data)
+    updated_item = crud.update(db, Dim_Payment_Method, Dim_Payment_Method.payment_method_id == payment_method_id, item_data)
     if not updated_item:
         raise HTTPException(status_code=404, detail="Payment Method not found")
     return updated_item
@@ -161,7 +161,7 @@ def delete_payment_method(payment_method_id: int, db: Session = Depends(get_db))
     -------
 
     """
-    success = crud.delete(db, Dim_Payment_Method, payment_method_id)
+    success = crud.delete(db, Dim_Payment_Method, Dim_Payment_Method.payment_method_id == payment_method_id)
     if not success:
         raise HTTPException(status_code=404, detail="Payment Method not found")
     return {"status": "success", "message": "Payment Method deleted successfully"}
@@ -218,7 +218,7 @@ def update_customer(customer_id: int, item_data: dict, db: Session = Depends(get
 
     """
 
-    updated_item = crud.update(db, Dim_Customer, customer_id, item_data)
+    updated_item = crud.update(db, Dim_Customer, Dim_Customer.customer_id == customer_id, item_data)
     if not updated_item:
         raise HTTPException(status_code=404, detail="Customer not found")
     return updated_item
@@ -238,7 +238,7 @@ def delete_customer(customer_id: int, db: Session = Depends(get_db)):
     -------
 
     """
-    success = crud.delete(db, Dim_Customer, customer_id)
+    success = crud.delete(db, Dim_Customer, Dim_Customer.customer_id == customer_id)
     if not success:
         raise HTTPException(status_code=404, detail="Customer not found")
     return {"status": "success", "message": "Customer deleted successfully"}
@@ -294,7 +294,7 @@ def update_clv_prediction(prediction_id: int, item_data: dict, db: Session = Dep
     -------
 
     """
-    updated_item = crud.update(db, CLV_Prediction, prediction_id, item_data)
+    updated_item = crud.update(db, CLV_Prediction, CLV_Prediction.prediction_id == prediction_id, item_data)
     if not updated_item:
         raise HTTPException(status_code=404, detail="CLV Prediction not found")
     return updated_item
@@ -314,7 +314,7 @@ def delete_clv_prediction(prediction_id: int, db: Session = Depends(get_db)):
     -------
 
     """
-    success = crud.delete(db, CLV_Prediction, prediction_id)
+    success = crud.delete(db, CLV_Prediction, CLV_Prediction.prediction_id == prediction_id)
     if not success:
         raise HTTPException(status_code=404, detail="CLV Prediction not found")
     return {"status": "success", "message": "CLV Prediction deleted successfully"}
