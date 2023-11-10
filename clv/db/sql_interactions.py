@@ -244,6 +244,33 @@ class SqlHandler:
             return "No matching data found."
         else:
             return rows
+
+
+    def get_table_data(self, columns: list = None, condition: str = None) -> pd.DataFrame:
+        """
+        Retrieve data from the table based on the specified columns and optional condition.
+
+        Parameters:
+            columns (list): A list of column names to retrieve. If not specified, all columns will be retrieved.
+            condition (str): An optional SQL condition to filter the data (e.g., "column_name = 'value'"). If not specified, all data will be retrieved.
+
+        Returns:
+            pd.DataFrame: A DataFrame containing the retrieved data.
+        """
+        if columns is None:
+            columns = self.get_table_columns()
+
+        if not columns:
+            return pd.DataFrame()
+
+        column_names = ', '.join(columns)
+
+        query = f"SELECT {column_names} FROM {self.table_name}"
+        if condition:
+            query += f" WHERE {condition}"
+
+        data = pd.read_sql_query(query, self.cnxn)
+        return data
    
         
 
