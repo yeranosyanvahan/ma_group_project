@@ -1,8 +1,8 @@
 # Importing necessary modules
-from .db import SqlHandler
-from .logger import CustomFormatter
-from .models import CLV
+from clv.db import SqlHandler
+from clv.logger import CustomFormatter
 
+# Inserting, selecting sample data into/from database
 
 # Create an instance of SqlHandler
 clv_handler_insert = SqlHandler('internet_service_provider', 'clv_prediction')
@@ -10,9 +10,8 @@ clv_handler_insert = SqlHandler('internet_service_provider', 'clv_prediction')
 # Uncomment the next line if you want to truncate the table before inserting
 #clv_handler.truncate_table()
 
-# insert prediction to db
-clv_instance = CLV()
-clv_pred1 = clv_instance.CLV_formula()
+# insert sample prediction to db
+clv_pred1 = 874
 
 clv_data1 = {
     "prediction_id": 1,

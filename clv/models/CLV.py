@@ -48,19 +48,12 @@ class CLV():
         customer_probabilities = p(self.t)
 
         # Calculate the CLV using the formula
-        print(customer_probabilities)
         clv = 0
         for i in range(len(customer_probabilities)):
-            clv += (customer_probabilities[i] / ((1 + discount_rate/12) ** (i-1)))
+            clv += (customer_probabilities[i] / ((1 + discount_rate / 12) ** i))
 
         clv *= monthly_margin
 
         return clv
 
-# Example usage:
-# Replace with your desired value for t
-t = 40
-clv_calculator = CLV(t)
 
-clv = clv_calculator.calculate_clv()
-print(f"CLV: ${clv:.2f}")
