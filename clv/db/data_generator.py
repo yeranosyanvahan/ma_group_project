@@ -18,10 +18,16 @@ fake = Faker()
 
 ## Dim_Customer
 def generate_dim_customer(customer_id):
+    day1 = fake.date_time_this_decade()
+    day2 = fake.date_time_this_decade()
     return {
         "customer_id": customer_id,
         "age": random.randint(18, 80),
-        "gender": fake.random_element(elements=("Male", "Female"))
+        "gender": fake.random_element(elements=("Male", "Female")),
+        "first_transaction_date": day2 if day1 > day2 else day1,
+        "last_transaction_date": day1 if day1 > day2 else day2,
+        "survival_time": abs(int(random.random() * (day1 - day2).days)),
+        "event_observed": random.random() > 0.4
     }
 
 ## Dim_Payment_Method
