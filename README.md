@@ -42,6 +42,9 @@ To get started, run
 
 ```python basic_clv.py``` to load the data in the root of the repo
 
+```python calculate_clv.py``` To calculate CLV and put into dataset
+OR
+```python -m clv.db.schema && python basic_clv.py && python calculate_clv.py```
 and ```python -m clv.api.fast``` to run the api
 
 To check the db follow the link https://inloop.github.io/sqlite-viewer/
@@ -57,8 +60,8 @@ curl -X 'POST' \
 "customer_id": 1,
 "clv" :200,
 "predicted_customer_type": "Lost Cause",
-"is_campaign1_succes": true,
-"is_campaign2_succes": true
+"is_campaign1_success": true,
+"is_campaign2_success": true
 
 }  '
 ```
@@ -72,8 +75,8 @@ curl -X 'PUT' \
   -d '{
 "clv" :200,
 "predicted_customer_type": "Vulnerable Customer",
-"is_campaign1_succes": true,
-"is_campaign2_succes": true
+"is_campaign1_success": true,
+"is_campaign2_success": true
 }'
 ```
 

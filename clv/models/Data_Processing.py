@@ -13,6 +13,12 @@ clv_handler = SqlHandler('internet_service_provider', 'fact_transaction')
 data = clv_handler.get_table_data()
 clv_handler.close_cnxn()
 
+connect_to_dim_customer = SqlHandler('internet_service_provider', 'dim_customer')
+
+# Get transaction table data
+dim_customer = connect_to_dim_customer.get_table_data()
+connect_to_dim_customer.close_cnxn()
+dim_customer['survival_time_months'] = dim_customer['survival_time'] // 30
 
 
 # Convert 'transaction_date' to datetime
@@ -55,22 +61,7 @@ def p(t):
     list:
         A list of survival probabilities at different time points up to t.
     """
-
-    data['transaction_date'] = pd.to_datetime(data['transaction_date'])
-
-    # Group the data by customer and find the latest transaction date
-    data["customer_latest_transaction"] = data.groupby('customer_id')['transaction_date'].transform('max')
-    data['customer_earliest_transaction'] = data.groupby('customer_id')['transaction_date'].transform('min')
-    data['survival_time_months'] = (data['customer_latest_transaction'] - data['customer_earliest_transaction']).dt.days // 30
-    # Get the current date
-    current_date = datetime.now()
-
-    # Calculate the event_observed column
-    data['event_observed'] = (
-            (current_date.year != data['customer_latest_transaction'].dt.year) |
-            (current_date.month != data['customer_latest_transaction'].dt.month)).astype(int)
-
-    data.drop_duplicates(subset='customer_id', keep='first', inplace = True)
+    data = dim_customer.copy()
 
     kmf = KaplanMeierFitter()
     kmf.fit(durations=data["survival_time_months"], event_observed=data["event_observed"])
