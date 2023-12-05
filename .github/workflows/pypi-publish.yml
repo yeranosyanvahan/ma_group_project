@@ -8,8 +8,10 @@
 
 name: Push Release to PyPI
 
-
-on: create
+on:
+  release:
+    types:
+      - published
 
 jobs:
   pypi-publish:
