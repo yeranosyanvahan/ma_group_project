@@ -8,8 +8,10 @@
 
 name: Push Release to PyPI
 
+on:
+  push:
+    branches: ["main"]
 
-on: create
 
 jobs:
   deploy:
