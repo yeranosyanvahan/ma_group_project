@@ -2,7 +2,6 @@ from setuptools import setup, find_packages
 
 setup(
     author='Group 5',
-    packages=find_packages(),
     url='https://github.com/yeranosyanvahan/ma_group_project',
     description='CLV prediction',
     name='SocraCLV',
