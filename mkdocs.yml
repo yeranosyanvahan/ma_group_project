@@ -1,0 +1,12 @@
+site_name: SocraCLV
+
+nav:
+  - Home: index.md
+  - Database Setup: database_setup.md
+  - Loading the Data: loading_data.md
+  - Model: model.md
+  - API: API.md
+  - Logger: logger.md
+
+theme:
+   name: readthedocs

@@ -14,23 +14,6 @@ def get_db():
     finally:
         db.close()
 
-@app.post("/transaction/")
-def create_transaction(item_data: dict, db: Session = Depends(get_db)):
-    """
-
-    Parameters
-    ----------
-    item_data: dict :
-        
-    db: Session :
-         (Default value = Depends(get_db))
-
-    Returns
-    -------
-
-    """
-    return crud.create(db, Fact_Transacation, item_data)
-
 @app.get("/transaction/{transaction_id}")
 def get_transaction(transaction_id: int, db: Session = Depends(get_db)):
     """
@@ -47,6 +30,23 @@ def get_transaction(transaction_id: int, db: Session = Depends(get_db)):
 
     """
     return crud.read(db, Fact_Transacation, Fact_Transacation.transaction_id == transaction_id)
+
+@app.post("/transaction/")
+def create_transaction(item_data: dict, db: Session = Depends(get_db)):
+    """
+
+    Parameters
+    ----------
+    item_data: dict :
+        
+    db: Session :
+         (Default value = Depends(get_db))
+
+    Returns
+    -------
+
+    """
+    return crud.create(db, Fact_Transacation, item_data)
 
 @app.put("/transaction/{transaction_id}")
 def update_transaction(transaction_id: int, item_data: dict, db: Session = Depends(get_db)):
@@ -90,23 +90,6 @@ def delete_transaction(transaction_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Transaction not found")
     return {"status": "success", "message": "Transaction deleted successfully"}
 
-@app.post("/payment_method/")
-def create_payment_method(item_data: dict, db: Session = Depends(get_db)):
-    """
-
-    Parameters
-    ----------
-    item_data: dict :
-        
-    db: Session :
-         (Default value = Depends(get_db))
-
-    Returns
-    -------
-
-    """
-    return crud.create(db, Dim_Payment_Method, item_data)
-
 @app.get("/payment_method/{payment_method_id}")
 def get_payment_method(payment_method_id: int, db: Session = Depends(get_db)):
     """
@@ -123,6 +106,23 @@ def get_payment_method(payment_method_id: int, db: Session = Depends(get_db)):
 
     """
     return crud.read(db, Dim_Payment_Method, Dim_Payment_Method.payment_method_id == payment_method_id)
+
+@app.post("/payment_method/")
+def create_payment_method(item_data: dict, db: Session = Depends(get_db)):
+    """
+
+    Parameters
+    ----------
+    item_data: dict :
+        
+    db: Session :
+         (Default value = Depends(get_db))
+
+    Returns
+    -------
+
+    """
+    return crud.create(db, Dim_Payment_Method, item_data)
 
 @app.put("/payment_method/{payment_method_id}")
 def update_payment_method(payment_method_id: int, item_data: dict, db: Session = Depends(get_db)):
@@ -166,23 +166,6 @@ def delete_payment_method(payment_method_id: int, db: Session = Depends(get_db))
         raise HTTPException(status_code=404, detail="Payment Method not found")
     return {"status": "success", "message": "Payment Method deleted successfully"}
 
-@app.post("/customer/")
-def create_customer(item_data: dict, db: Session = Depends(get_db)):
-    """
-
-    Parameters
-    ----------
-    item_data: dict :
-        
-    db: Session :
-         (Default value = Depends(get_db))
-
-    Returns
-    -------
-
-    """
-    return crud.create(db, Dim_Customer, item_data)
-
 @app.get("/customer/{customer_id}")
 def get_customer(customer_id: int, db: Session = Depends(get_db)):
     """
@@ -199,6 +182,23 @@ def get_customer(customer_id: int, db: Session = Depends(get_db)):
 
     """
     return crud.read(db, Dim_Customer, Dim_Customer.customer_id == customer_id)
+
+@app.post("/customer/")
+def create_customer(item_data: dict, db: Session = Depends(get_db)):
+    """
+
+    Parameters
+    ----------
+    item_data: dict :
+        
+    db: Session :
+         (Default value = Depends(get_db))
+
+    Returns
+    -------
+
+    """
+    return crud.create(db, Dim_Customer, item_data)
 
 @app.put("/customer/{customer_id}")
 def update_customer(customer_id: int, item_data: dict, db: Session = Depends(get_db)):
@@ -243,23 +243,6 @@ def delete_customer(customer_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Customer not found")
     return {"status": "success", "message": "Customer deleted successfully"}
 
-@app.post("/clv/")
-def create_clv_prediction(item_data: dict, db: Session = Depends(get_db)):
-    """
-
-    Parameters
-    ----------
-    item_data: dict :
-        
-    db: Session :
-         (Default value = Depends(get_db))
-
-    Returns
-    -------
-
-    """
-    return crud.create(db, CLV_Prediction, item_data)
-
 @app.get("/clv/{prediction_id}")
 def get_clv_prediction(prediction_id: int, db: Session = Depends(get_db)):
     """
@@ -276,6 +259,23 @@ def get_clv_prediction(prediction_id: int, db: Session = Depends(get_db)):
 
     """
     return crud.read(db, CLV_Prediction, CLV_Prediction.prediction_id == prediction_id)
+
+@app.post("/clv/")
+def create_clv_prediction(item_data: dict, db: Session = Depends(get_db)):
+    """
+
+    Parameters
+    ----------
+    item_data: dict :
+        
+    db: Session :
+         (Default value = Depends(get_db))
+
+    Returns
+    -------
+
+    """
+    return crud.create(db, CLV_Prediction, item_data)
 
 @app.put("/clv/{prediction_id}")
 def update_clv_prediction(prediction_id: int, item_data: dict, db: Session = Depends(get_db)):

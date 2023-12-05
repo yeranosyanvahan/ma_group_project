@@ -11,7 +11,7 @@ ch.setFormatter(CustomFormatter())
 logger.addHandler(ch)
 
 
-from sqlalchemy import create_engine,Column,Integer,String,Float, DateTime, ForeignKey, Boolean, Date
+from sqlalchemy import create_engine,Column,Integer,String,Float, DateTime, ForeignKey, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 
@@ -55,8 +55,8 @@ class Dim_Customer(Base):
     customer_id = Column(Integer, primary_key=True)
     age = Column(Integer)
     gender = Column(String(100))
-    first_transaction_date = Column(Date)
-    last_transaction_date = Column(Date)
+    first_transaction_date = Column(DateTime)
+    last_transaction_date = Column(DateTime)
     survival_time = Column(Integer)
     event_observed = Column(Boolean)
 

@@ -22,6 +22,13 @@ To check the db follow the link https://inloop.github.io/sqlite-viewer/
 
 ### POST example of clv prediction table
 ```bash
+curl -X 'GET' \
+  'http://127.0.0.1:8000/clv/2' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json'
+```
+
+```bash
 curl -X 'POST' \
   'http://127.0.0.1:8000/clv/' \
   -H 'accept: application/json' \
