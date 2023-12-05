@@ -2,9 +2,7 @@
 
 ### Group project within the scope of the course DS223 – Marketing Analytics
 
-The project aims to develop a Python package for predicting a customer's Lifetime Value (CLV) for an Internet package provider. The CLV predictor will help understand the expected revenue from each customer over time, assisting in making informed strategic decisions. 
-
-As the name suggests, the package is not just about analytics but involves a philosophically flavoured approach to understanding and predicting Customer Lifetime Value to gain meaningful insights about the long-term relationships between the company and customers.
+The project aims to develop a Python package for predicting a customer's Lifetime Value (CLV) for an Internet package provider that can be applied to similar-scope companies in general. As the name suggests, the package is not just about analytics but involves a philosophically flavoured approach to understanding and predicting Customer Lifetime Value to gain meaningful insights about the long-term relationships between the company and customers.
 
 
 ## SetUp
