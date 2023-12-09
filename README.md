@@ -1,4 +1,4 @@
-# SocraCLV
+# SocraCLV [Documentation](https://yeranosyanvahan.github.io/socraclv/)
 
 ### Group project within the scope of the course DS223 – Marketing Analytics
 
@@ -19,13 +19,15 @@ and ```python -m clv.api.fast``` to run the api
 
 To check the db follow the link https://inloop.github.io/sqlite-viewer/
 
-### POST example of clv prediction table
+### GET example of clv prediction table
 ```bash
 curl -X 'GET' \
   'http://127.0.0.1:8000/clv/2' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json'
 ```
+
+### POST example of clv prediction table
 
 ```bash
 curl -X 'POST' \
