@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Database Setup - SocraCLV</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Database Setup";
+        var mkdocs_page_input_path = "database_setup.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> SocraCLV
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Database Setup</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#database-models">Database Models</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#dim_payment_method">Dim_Payment_Method</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dim_customer">Dim_Customer</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#fact_transacation">Fact_Transacation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#clv_prediction">CLV_Prediction</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#here-is-database-schema">Here is database schema</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#database-initialization">Database Initialization</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../loading_data/">Loading the Data</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../model/">Model</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../API/">API</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../logger/">Logger</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">SocraCLV</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Database Setup</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="internet-service-provider-database-documentation">Internet Service Provider Database Documentation</h1>
+<h2 id="overview">Overview</h2>
+<p>This module is designed for managing and interacting with a database for an internet service provider. It includes a logging setup for tracking operations and a series of SQLAlchemy ORM classes for database interactions.</p>
+<h2 id="database-models">Database Models</h2>
+<h3 id="dim_payment_method">Dim_Payment_Method</h3>
+<p>A dimension table for storing different payment methods.</p>
+<ul>
+<li><code>payment_method_id</code> (Integer, Primary Key): Unique identifier for the payment method.</li>
+<li><code>payment_method_name</code> (String): Descriptive name of the payment method.</li>
+</ul>
+<h3 id="dim_customer">Dim_Customer</h3>
+<p>A dimension table for storing customer details.</p>
+<ul>
+<li><code>customer_id</code> (Integer, Primary Key): Unique identifier for the customer.</li>
+<li><code>age</code> (Integer): Age of the customer.</li>
+<li><code>gender</code> (String): Gender of the customer.</li>
+<li><code>first_transaction_date</code> (DateTime): Date of the first transaction.</li>
+<li><code>last_transaction_date</code> (DateTime): Date of the last transaction.</li>
+<li><code>survival_time</code> (Integer): Duration between the first and last transaction.</li>
+<li><code>event_observed</code> (Boolean): Indicates if an event (e.g., churn) is observed.</li>
+</ul>
+<h3 id="fact_transacation">Fact_Transacation</h3>
+<p>A fact table for storing transactions.</p>
+<ul>
+<li><code>transaction_id</code> (Integer, Primary Key): Unique identifier for the transaction.</li>
+<li><code>customer_id</code> (Integer, ForeignKey): Links to the customer in <code>Dim_Customer</code>.</li>
+<li><code>payment_method_id</code> (Integer, ForeignKey): Links to the payment method in <code>Dim_Payment_Method</code>.</li>
+<li><code>transaction_date</code> (DateTime): Date and time of the transaction.</li>
+<li><code>amount</code> (Float): Monetary value of the transaction.</li>
+<li>Relationships with <code>Dim_Customer</code> and <code>Dim_Payment_Method</code>.</li>
+</ul>
+<h3 id="clv_prediction">CLV_Prediction</h3>
+<p>A table for storing customer lifetime value predictions.</p>
+<ul>
+<li><code>prediction_id</code> (Integer, Primary Key, Auto-increment): Unique identifier for each prediction.</li>
+<li><code>customer_id</code> (Integer, ForeignKey): Links to the customer in <code>Dim_Customer</code>.</li>
+<li><code>clv</code> (Float): Predicted Customer Lifetime Value.</li>
+<li><code>predicted_customer_type</code> (String): Type of customer.</li>
+<li><code>is_campaign1_success</code> (Boolean): Success of the first campaign.</li>
+<li><code>is_campaign2_success</code> (Boolean): Success of the second campaign.</li>
+</ul>
+<h3 id="here-is-database-schema">Here is database schema</h3>
+<p><img alt="ERD" src="../ERD.png" /></p>
+<h2 id="database-initialization">Database Initialization</h2>
+<p>To create all tables in the database, run:</p>
+<pre><code class="language-python">import runpy
+runpy.run_module(&quot;clv.db.schema&quot;)
+</code></pre>
+<p>This will use the engine configuration to create tables as per the defined models.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../loading_data/" class="btn btn-neutral float-right" title="Loading the Data">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../loading_data/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

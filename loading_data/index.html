@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Loading the Data - SocraCLV</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Loading the Data";
+        var mkdocs_page_input_path = "loading_data.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> SocraCLV
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../database_setup/">Database Setup</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Loading the Data</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#class-attributes">Class Attributes:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#__init__self-dbname-str-table_name-str-none">__init__(self, dbname: str, table_name: str) -&gt; None</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#close_cnxnself-none">close_cnxn(self) -&gt; None</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#insert_oneself-values-dict-str">insert_one(self, values: dict) -&gt; str</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#parameters_1">Parameters:</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#returns">Returns:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_table_columnsself-list">get_table_columns(self) -&gt; list</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#returns_1">Returns:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#truncate_tableself-none">truncate_table(self) -&gt; None</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#drop_tableself">drop_table(self)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#insert_manyself-df-pddataframe-str">insert_many(self, df: pd.DataFrame) -&gt; str</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#parameters_2">Parameters:</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#returns_2">Returns:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#from_sql_to_pandasself-chunksize-int-id_value-str-pddataframe">from_sql_to_pandas(self, chunksize: int, id_value: str) -&gt; pd.DataFrame</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#parameters_3">Parameters:</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#returns_3">Returns:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update_tableself-condition">update_table(self, condition)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#parameters_4">Parameters:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#select_rowself-column_name-str-value-tuple">select_row(self, column_name: str, value) -&gt; tuple</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#parameters_5">Parameters:</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#returns_4">Returns:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_table_dataself-columns-list-none-condition-str-none-pddataframe">get_table_data(self, columns: list = None, condition: str = None) -&gt; pd.DataFrame</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#parameters_6">Parameters:</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#returns_5">Returns:</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../model/">Model</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../API/">API</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../logger/">Logger</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">SocraCLV</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Loading the Data</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="sqlhandler-class-documentation">SqlHandler Class Documentation</h1>
+<h2 id="overview">Overview</h2>
+<p>The <code>SqlHandler</code> class is designed to handle common SQL operations on a database. It provides methods for various database operations such as inserting data, retrieving table columns, truncating tables, and more.</p>
+<h3 id="class-attributes">Class Attributes:</h3>
+<ul>
+<li><code>dbname</code> (str): The name of the database.</li>
+<li><code>table_name</code> (str): The name of the table to perform operations on.</li>
+</ul>
+<h2 id="methods">Methods</h2>
+<h3 id="__init__self-dbname-str-table_name-str-none"><code>__init__(self, dbname: str, table_name: str) -&gt; None</code></h3>
+<p>Initializes the SqlHandler object with a database name and table name.</p>
+<h4 id="parameters">Parameters:</h4>
+<ul>
+<li><code>dbname</code> (str): The name of the database to connect to.</li>
+<li><code>table_name</code> (str): The name of the table to perform operations on.</li>
+</ul>
+<hr />
+<h3 id="close_cnxnself-none"><code>close_cnxn(self) -&gt; None</code></h3>
+<p>Closes the connection to the database.</p>
+<hr />
+<h3 id="insert_oneself-values-dict-str"><code>insert_one(self, values: dict) -&gt; str</code></h3>
+<p>Inserts a single row into the table.</p>
+<h4 id="parameters_1">Parameters:</h4>
+<ul>
+<li><code>values</code> (dict): A dictionary containing the column names and their respective values.</li>
+</ul>
+<h4 id="returns">Returns:</h4>
+<ul>
+<li>A message indicating the success of the insertion.</li>
+</ul>
+<hr />
+<h3 id="get_table_columnsself-list"><code>get_table_columns(self) -&gt; list</code></h3>
+<p>Retrieves a list of column names from the table in the database.</p>
+<h4 id="returns_1">Returns:</h4>
+<ul>
+<li>A list of column names from the table.</li>
+</ul>
+<hr />
+<h3 id="truncate_tableself-none"><code>truncate_table(self) -&gt; None</code></h3>
+<p>Removes all data from the table by dropping it and creating a new one.</p>
+<hr />
+<h3 id="drop_tableself"><code>drop_table(self)</code></h3>
+<p>Drops the table from the database.</p>
+<hr />
+<h3 id="insert_manyself-df-pddataframe-str"><code>insert_many(self, df: pd.DataFrame) -&gt; str</code></h3>
+<p>Inserts multiple rows into the table from a Pandas DataFrame.</p>
+<h4 id="parameters_2">Parameters:</h4>
+<ul>
+<li><code>df</code> (pd.DataFrame): The DataFrame containing the data to insert.</li>
+</ul>
+<h4 id="returns_2">Returns:</h4>
+<ul>
+<li>A message indicating the success or failure of the operation.</li>
+</ul>
+<hr />
+<h3 id="from_sql_to_pandasself-chunksize-int-id_value-str-pddataframe"><code>from_sql_to_pandas(self, chunksize: int, id_value: str) -&gt; pd.DataFrame</code></h3>
+<p>Retrieves data from the table in chunks and returns it as a Pandas DataFrame.</p>
+<h4 id="parameters_3">Parameters:</h4>
+<ul>
+<li><code>chunksize</code> (int): The size of each data chunk to retrieve.</li>
+<li><code>id_value</code> (str): The ID value to order the data by.</li>
+</ul>
+<h4 id="returns_3">Returns:</h4>
+<ul>
+<li>A DataFrame containing the retrieved data.</li>
+</ul>
+<hr />
+<h3 id="update_tableself-condition"><code>update_table(self, condition)</code></h3>
+<p>Updates the table based on the specified condition.</p>
+<h4 id="parameters_4">Parameters:</h4>
+<ul>
+<li><code>condition</code>: The condition for updating the table.</li>
+</ul>
+<hr />
+<h3 id="select_rowself-column_name-str-value-tuple"><code>select_row(self, column_name: str, value) -&gt; tuple</code></h3>
+<p>Selects a row from the table based on a specific column name and value.</p>
+<h4 id="parameters_5">Parameters:</h4>
+<ul>
+<li><code>column_name</code> (str): The name of the column to filter on.</li>
+<li><code>value</code>: The value to filter rows by in the specified column.</li>
+</ul>
+<h4 id="returns_4">Returns:</h4>
+<ul>
+<li>A tuple containing the selected row.</li>
+</ul>
+<hr />
+<h3 id="get_table_dataself-columns-list-none-condition-str-none-pddataframe"><code>get_table_data(self, columns: list = None, condition: str = None) -&gt; pd.DataFrame</code></h3>
+<p>Retrieves data from the table based on specified columns and an optional condition.</p>
+<h4 id="parameters_6">Parameters:</h4>
+<ul>
+<li><code>columns</code> (list): A list of column names to retrieve.</li>
+<li><code>condition</code> (str): An optional SQL condition to filter the data.</li>
+</ul>
+<h4 id="returns_5">Returns:</h4>
+<ul>
+<li>A DataFrame containing the retrieved data.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../database_setup/" class="btn btn-neutral float-left" title="Database Setup"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../model/" class="btn btn-neutral float-right" title="Model">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../database_setup/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../model/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
