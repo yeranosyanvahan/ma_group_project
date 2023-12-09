@@ -43,7 +43,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: https://docs.yeranosyanvahan.github.io/ma_group_project/
+      url: ${{ steps.deployment.outputs.page_url }}/docs/
     runs-on: ubuntu-latest
     needs: build
     steps:
