@@ -1,4 +1,6 @@
-# SocraCLV [Documentation](https://yeranosyanvahan.github.io/socraclv/)
+# SocraCLV 
+
+[Documentation](https://yeranosyanvahan.github.io/socraclv/)
 
 ### Group project within the scope of the course DS223 – Marketing Analytics
 
@@ -17,7 +19,6 @@ OR
 ```python -m clv.db.schema && python basic_clv.py && python calculate_clv.py```
 and ```python -m clv.api.fast``` to run the api
 
-To check the db follow the link https://inloop.github.io/sqlite-viewer/
 
 ### GET example of clv prediction table
 ```bash
